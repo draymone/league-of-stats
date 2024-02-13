@@ -6,12 +6,18 @@ function App() {
   const [username, setUsername] = useState('')
 
   return <>
-    <InputForm setParentUsername={setUsername}/>
-    <Profile username={username}/>
+    <InputForm setParentUsername={setUsername} />
+    <Profile username={username} />
   </>;
 }
 
-function InputForm({setParentUsername}: InputFormProps) {
+/**
+ * 
+ * A form that prompts the user for his username
+ * @param {Dispatch<SetStateAction<string>>} setParentUsername - use state for setting the username
+ *
+ */
+function InputForm({ setParentUsername }: InputFormProps) {
 
   const [username, setUsername] = useState('');
 
@@ -22,7 +28,6 @@ function InputForm({setParentUsername}: InputFormProps) {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setParentUsername(username)
-    console.log("wooo")
   };
 
   return <div>
@@ -32,6 +37,7 @@ function InputForm({setParentUsername}: InputFormProps) {
         type="text"
         id="username"
         name="username"
+        placeholder="player#123"
         value={username}
         onChange={handleChange}
       />
@@ -39,7 +45,7 @@ function InputForm({setParentUsername}: InputFormProps) {
     </form>
   </div>;
 }
-interface InputFormProps{
+interface InputFormProps {
   setParentUsername: Dispatch<SetStateAction<string>>;
 }
 
