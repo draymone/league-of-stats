@@ -7,18 +7,27 @@ interface AccountData {
   tagLine: string,
   puuid: string
 }
+interface SummonerData {
+  accountId: string,
+  profileIconId: number,
+  revisionDate: number,
+  name: string,
+  id: string,
+  puuid: string,
+  summonerLevel: number
+}
 
 function Profile({ username }: ProfileProps) {
   const [accountData, setAccountData] = useState<AccountData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchSummonerData = async () => {
+    const fetchAccountData = async () => {
       try {
         const splittedUsername = username.split("#")
         const response = await fetch(`https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${splittedUsername[0]}/${splittedUsername[1]}?api_key=${API_KEY}`);
         if (!response.ok) {
-          throw new Error(`Failed to fetch summoner information. Response code: ${response.status}`);
+          throw new Error(`Failed to fetch account information. Response code: ${response.status}`);
         }
         const data = await response.json();
         setAccountData(data);
@@ -30,7 +39,7 @@ function Profile({ username }: ProfileProps) {
     };
 
     if (username) {
-      fetchSummonerData();
+      fetchAccountData();
     }
   }, [username]);
 
@@ -74,14 +83,55 @@ interface ProfileProps {
  * @returns 
  */
 function SummonerInformations({ puuid }: AccountInformationsProps) {
-  if (!puuid) {
-    return <>
-      Holé muchacho</>
-  }
+  const [summonerData, setSummonerData] = useState<SummonerData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  return <div>
-    <p>pUUID: {puuid}</p>
-  </div>
+  useEffect(() => {
+    const fetchSummonerData = async () => {
+      try {
+        const response = await fetch(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${API_KEY}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch summoner information. Response code: ${response.status}`);
+        }
+        const data = await response.json();
+        setSummonerData(data);
+        setError(null);
+      } catch (error) {
+        setSummonerData(null);
+        setError((error as Error).message);
+      }
+    };
+
+    if (puuid) {
+      fetchSummonerData();
+    }
+  }, [puuid]);
+
+  return (
+    <div>
+      {/*Error display*/}
+      {error && <p>
+        An error happened. Please try again later.<br />
+        Error code: {error}
+      </p>}
+
+      {/* Normal display */}
+      {(puuid && !error) && (
+        <div>
+          {summonerData ? ( // Succes display
+            <>
+              <img width={100} src={`https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${summonerData.profileIconId}.png`}/>
+              {summonerData.name} <br/>
+              Level: {summonerData.summonerLevel} <br/>
+            </>
+          ) : ( // Loading display
+            <p>Loading...</p>
+          )}
+        </div>
+      )}
+
+    </div>
+  );
 }
 interface AccountInformationsProps {
   puuid: string | undefined
