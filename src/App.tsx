@@ -40,7 +40,6 @@ function App() {
 
   const puuid: string | undefined = accountData?.puuid;
 
-  console.log(puuid)
   return <>
     <InputForm setParentUsername={setUsername} />
     {/*Error display*/}

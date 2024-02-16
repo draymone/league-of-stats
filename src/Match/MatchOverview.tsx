@@ -186,7 +186,6 @@ function RecentMatches({ puuid }: RecentMatchesProps) {
     useEffect(() => {
         const fetchAccountData = async () => {
             try {
-                console.log("fetching recent matches for " + puuid)
                 const response = await fetch(`https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=10&api_key=${API_KEY}`);
                 if (!response.ok) {
                     throw new Error(`Failed to fetch latest matches. Response code: ${response.status}`);
@@ -246,16 +245,12 @@ function MatchOverview({ matchId }: MatchOverviewProps) {
     useEffect(() => {
         const fetchAccountData = async () => {
             try {
-                console.log("fetching data for match " + matchId)
                 const response = await fetch(`https://europe.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${API_KEY}`);
-                console.log("RESPONSE RECIEVES")
                 if (!response.ok) {
                     throw new Error(`Failed to fetch match information. Response code: ${response.status}`);
                 }
                 const data = await response.json();
-                console.log("setting data")
                 setMatch(data);
-                console.log("DATA SET")
                 setError(null);
             } catch (error) {
                 setMatch(null);
