@@ -11,3 +11,11 @@ The project has some problem stopping you from running it on a server. You need 
 
 ## Legal
 This app isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+
+## Code
+### CSS properties ordering
+1. Position / padding / margin
+2. Size
+3. Color
+4. Typo
+5. Flex

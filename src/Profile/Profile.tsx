@@ -28,7 +28,7 @@ function Profile({ puuid }: ProfileProps) {
           {
             <>
               <SummonerInformations puuid={puuid} />
-              <RecentMatches puuid={puuid}/>
+              <RecentMatches puuid={puuid} />
             </>
           }
         </div>

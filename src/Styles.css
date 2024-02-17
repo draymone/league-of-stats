@@ -1,0 +1,70 @@
+/* PROFILE PAGE*/
+
+/* Match overview */
+.matchOverview {
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Champion & duration */
+.matchOverviewChampion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.matchOverviewChampionIcon {
+    width: 85px;
+}
+
+.matchOverviewDuration {
+    font-size: 37px;
+}
+
+/* KDA */
+.matchOverviewKda {
+    width: 140px;
+
+    font-size: 35px;
+    font-weight: 530;
+}
+
+.matchOverviewKdaKills {
+    color: #289f0d;
+}
+
+.matchOverviewKdaDeaths {
+    color: #922222;
+}
+
+.matchOverviewKdaAssists {
+    color: #fbff11;
+
+}
+
+/* Items */
+.matchOverviewItems {
+    width: 150px;
+    height: 75px;
+
+    background-color: #bfb98d;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.matchOverviewItem {
+    width: 32px;
+    height: 32px;
+
+    background-color: blue;
+}
