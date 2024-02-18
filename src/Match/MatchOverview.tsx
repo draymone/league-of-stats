@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API_KEY } from '../Config';
-import { FormationDuration } from '../Util';
+import { formationDuration, shortenString } from '../Util';
 
 // Interfaces
 interface MatchDto {
@@ -284,7 +284,7 @@ function MatchOverview({ matchId, puuid }: MatchOverviewProps) {
                         {/* Champion and game duration */}
                         <div className='matchOverviewChampion'>
                             <img className='matchOverviewChampionIcon' src={`https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${player.championName}.png`} alt={player.championName} />
-                            <span className='matchOverviewDuration'>{FormationDuration(match.info.gameDuration)}</span>
+                            <span className='matchOverviewDuration'>{formationDuration(match.info.gameDuration)}</span>
                         </div>
 
                         {/* KDA */}
@@ -306,6 +306,16 @@ function MatchOverview({ matchId, puuid }: MatchOverviewProps) {
                             <img className='matchOverviewItem' src={player.item4 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item4}.png` : '../assets/empty_item.png'} />
                             <img className='matchOverviewItem' src={player.item5 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item5}.png` : '../assets/empty_item.png'} />
                             <img className='matchOverviewItem' src='../assets/empty_item.png' /> {/* TODO: get the rune keystone */}
+                        </div>
+
+                        {/* Players list */}
+                        <div className='matchOverviewParticipants'>
+                            {match.info.participants.map(
+                                (participant, index) => <div className='matchOverviewParticipant' key={index}>
+                                    <img className='matchOverviewParticipantChampion' src={`https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${participant.championName}.png`} />
+                                    <span style={{color: (participant.puuid == player.puuid) ? '#1004f3' : '#202020'}}>{shortenString(participant.summonerName, 12)}</span>
+                                </div>
+                            )}
                         </div>
 
                     </div>

@@ -65,6 +65,41 @@
 .matchOverviewItem {
     width: 32px;
     height: 32px;
+}
 
-    background-color: blue;
+/* Participants */
+.matchOverviewParticipants {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 3px;
+    padding-left: 3px;
+
+    width: 290px;
+    height: 110px;
+
+    background-color: #bfb98d;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.matchOverviewParticipant {
+    margin-left: 2px;
+    margin-right: 2px;
+
+    width: 140px;
+
+    font-family: 'Courier New', Courier, monospace;
+
+    display: flex;
+    align-items: center;
+}
+
+.matchOverviewParticipantChampion {
+    margin-right: 3px;
+
+    width: 20px;
+    height: 20px;
 }
