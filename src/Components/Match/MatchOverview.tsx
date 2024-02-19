@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { API_KEY } from '../Config';
-import { formationDuration, shortenString } from '../Util';
+import { API_KEY } from '../../Config';
+import { formationDuration, shortenString } from '../../Util';
 
 // Interfaces
 interface MatchDto {

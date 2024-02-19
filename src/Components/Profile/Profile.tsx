@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { API_KEY } from '../Config';
+import { API_KEY } from '../../Config';
 import RecentMatches from '../Match/MatchOverview';
+import {useParams} from "react-router-dom";
 
 // Interfaces
 interface SummonerData {
@@ -19,7 +20,10 @@ interface SummonerData {
  * @param {string} puuid - account's puuid
  * @returns
  */
-function Profile({ puuid }: ProfileProps) {
+function Profile() {
+  const {puuid} = useParams();
+
+
   return (
     <div>
       <h2>Summoner Information</h2>
@@ -36,9 +40,6 @@ function Profile({ puuid }: ProfileProps) {
 
     </div>
   );
-}
-interface ProfileProps {
-  puuid: string | undefined
 }
 
 
