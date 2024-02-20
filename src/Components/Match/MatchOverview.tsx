@@ -313,7 +313,10 @@ function MatchOverview({ matchId, puuid }: MatchOverviewProps) {
                             {match.info.participants.map(
                                 (participant, index) => <div className='matchOverviewParticipant' key={index}>
                                     <img className='matchOverviewParticipantChampion' src={`https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${participant.championName}.png`} />
-                                    <span style={{color: (participant.puuid == player.puuid) ? '#1004f3' : '#202020'}}>{shortenString(participant.summonerName, 12)}</span>
+                                    <a style={{ color: (participant.puuid == player.puuid) ? '#1004f3' : '#202020' }}
+                                        href={participant.puuid}>
+                                        {shortenString(participant.summonerName, 12)}
+                                    </a>
                                 </div>
                             )}
                         </div>

@@ -1,6 +1,6 @@
 // Imports
 import { Route, Routes } from 'react-router-dom';
-import Profile from './Components/Profile/Profile';
+import Profile from './Pages/Profile';
 import UsernameInputForm from './Components/Generic/UsernameInputForm';
 
 

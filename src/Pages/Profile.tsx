@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { API_KEY } from '../../Config';
-import RecentMatches from '../Match/MatchOverview';
+import { API_KEY } from '../Config';
+import RecentMatches from '../Components/Match/MatchOverview';
 import {useParams} from "react-router-dom";
 
 // Interfaces
