@@ -2,7 +2,7 @@
 A React app that allows you to vizualise some data on your League of Legends profile. Not suitable as-is for server use (see [Run on a server](#run-on-a-server))
 
 ## How to use
-1. Complete Config.tsx with your api key
+1. Create a src/Config.tsx file and complete it with `export const API_KEY = 'YOUR_API_KEY_GOES_HERE';`
 ### Run locally
 2. Disable CORS on your browser (API calls are rejected because they are made from the browser)
 3. Execute `npm install`
