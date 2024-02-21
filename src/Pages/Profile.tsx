@@ -7,9 +7,6 @@ import { SummonerDto } from '../DTOs';
 
 /**
  * Shows profile-related informations
- * 
- * @param {string} puuid - account's puuid
- * @returns
  */
 function Profile() {
   const {puuid} = useParams();
