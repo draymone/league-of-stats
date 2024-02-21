@@ -2,17 +2,8 @@ import { useState, useEffect } from 'react';
 import { API_KEY } from '../Config';
 import RecentMatches from '../Components/Match/MatchOverview';
 import {useParams} from "react-router-dom";
+import { SummonerDto } from '../DTOs';
 
-// Interfaces
-interface SummonerData {
-  accountId: string,
-  profileIconId: number,
-  revisionDate: number,
-  name: string,
-  id: string,
-  puuid: string,
-  summonerLevel: number
-}
 
 /**
  * Shows profile-related informations
@@ -50,7 +41,7 @@ function Profile() {
  * @returns display of the player's icon, level and username
  */
 function SummonerInformations({ puuid }: AccountInformationsProps) {
-  const [summonerData, setSummonerData] = useState<SummonerData | null>(null);
+  const [summonerData, setSummonerData] = useState<SummonerDto | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

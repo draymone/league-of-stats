@@ -2,17 +2,11 @@
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState, useEffect } from 'react';
 import { API_KEY } from '../../Config';
 import { useLocation, useNavigate } from 'react-router-dom';
-
-// Interfaces
-interface AccountDTO {
-  gameName: string,
-  tagLine: string,
-  puuid: string
-}
+import { AccountDto } from '../../DTOs';
 
 function UsernameInputForm() {
   const [username, setUsername] = useState('')
-  const [accountData, setAccountData] = useState<AccountDTO | null>(null);
+  const [accountData, setAccountData] = useState<AccountDto | null>(null);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
