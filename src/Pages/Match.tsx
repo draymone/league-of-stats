@@ -8,7 +8,7 @@ import { MatchDto, MatchTimelineDto } from "../DTOs";
  * Shows informations on a match
  */
 function Match() {
-    const { matchid } = useParams();
+    const { matchId } = useParams();
     const [match, setMatch] = useState<MatchDto | null>(null);
     const [matchTimeline, setMatchTimeline] = useState<MatchTimelineDto | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -44,11 +44,11 @@ function Match() {
             }
         };
 
-        if (matchid) {
+        if (matchId) {
             fetchMatch();
             fetchMatchTimeline();
         }
-    }, [matchid]);
+    }, [matchId]);
 
     <div>
       {/*Error display*/}
@@ -58,7 +58,7 @@ function Match() {
       </p>}
 
       {/* Normal display */}
-      {(matchid && !error) && (
+      {(matchId && !error) && (
         <div>
           {match && matchTimeline ? ( // Succes display
             <>
