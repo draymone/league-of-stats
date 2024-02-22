@@ -178,6 +178,98 @@ export interface ObjectiveDto {
     first: boolean,
     kills: number
 }
+// Match timeline
+export interface MatchTimelineDto {
+    metadata: MetadataDto,
+    info: TimelineInfoDto
+}
+export interface TimelineInfoDto {
+    endOfGameResult: string,
+    frameInterval: number,
+    frames: FrameDto[];
+    gameId: number,
+    participants: TImelineParticipantDto[]
+}
+export interface FrameDto {
+    timestamp: number,
+    events: any[],
+    participantFrames: ParticipantFramesDto
+}
+export interface ParticipantFramesDto {
+    1: ParticipantFrameDto,
+    2: ParticipantFrameDto,
+    3: ParticipantFrameDto,
+    4: ParticipantFrameDto,
+    5: ParticipantFrameDto,
+    6: ParticipantFrameDto,
+    7: ParticipantFrameDto,
+    8: ParticipantFrameDto,
+    9: ParticipantFrameDto,
+    10: ParticipantFrameDto,
+}
+export interface ParticipantFrameDto {
+    xp: number,
+    totalGold: number,
+    timeEnemySpentControlled: number,
+    participantId: number,
+    minionsKilled: number,
+    level: number,
+    jungleMinionsKilled: number,
+    goldPerSecond: number,
+    currentGold: number,
+    position: PositionDto,
+    damageStats: DamageStatsDto,
+    championStats: ChampionStatsDto
+}
+export interface PositionDto {
+    x: number,
+    y: number
+}
+export interface DamageStatsDto {
+    magicDamageDone: number,
+    magicDamageDoneToChampions: number,
+    magicDamageTaken: number,
+    physicalDamageDone: number,
+    physicalDamageDoneToChampions: number,
+    physicalDamageTaken: number,
+    totalDamageDone: number,
+    totalDamageDoneToChampions: number,
+    totalDamageTaken: number,
+    trueDamageDone: number,
+    trueDamageDoneToChampions: number,
+    trueDamageTaken: number
+}
+export interface ChampionStatsDto {
+    abilityHaste: number,
+    abilityPower: number,
+    armor: number,
+    armorPen: number,
+    armorPenPercent: number,
+    attackDamage: number,
+    attackSpeed: number,
+    bonusArmorPenPercent: number,
+    bonusMagicPenPercent: number,
+    ccReduction: number,
+    cooldownReduction: number,
+    health: number,
+    healthMax: number,
+    healthRegen: number,
+    lifesteal: number,
+    magicPen: number,
+    magicPenPercent: number,
+    magicResist: number,
+    movementSpeed: number,
+    omnivamp: number,
+    physicalVamp: number,
+    power: number,
+    powerMax: number,
+    powerRegen: number,
+    spellVamp: number
+}
+export interface TImelineParticipantDto {
+    participantId: number,
+    puuid: string
+}
 
 // Account
 export interface AccountDto {
