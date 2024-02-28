@@ -38,7 +38,7 @@ function UsernameInputForm() {
 
   const puuid: string | undefined = accountData?.puuid;
 
-  return <main>
+  return <>
     <InputForm setParentUsername={setUsername} />
     {/*Error display*/}
     {error && <p>
@@ -59,7 +59,7 @@ function UsernameInputForm() {
       </div>
     )}
 
-  </main>;
+  </>;
 }
 
 /**
