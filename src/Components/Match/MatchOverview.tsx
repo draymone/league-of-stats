@@ -64,6 +64,7 @@ interface RecentMatchesProps {
  * @returns 
  */
 function MatchOverview({ matchId, puuid }: MatchOverviewProps) {
+    //TODO convert to tailwind everything
     const [match, setMatch] = useState<MatchDto | null>(null);
     const [error, setError] = useState<string | null>(null);
 
@@ -103,43 +104,42 @@ function MatchOverview({ matchId, puuid }: MatchOverviewProps) {
         {(matchId && !error) && (
             <>
                 {(match && player) ? ( // Succes display
-                    <div className='matchOverview'
-                        style={{ backgroundColor: player.win ? '#5dec4d' : '#e76464' }}> {/* Apply a background color depending on the win */}
+                    <div className={`my-5 py-2 flex justify-around items-center ${player.win ? "bg-green-500" : "bg-red-500"}`}>
                         {/* Champion and game duration */}
-                        <div className='matchOverviewChampion'>
-                            <img className='matchOverviewChampionIcon' src={`https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${player.championName}.png`} alt={player.championName} />
-                            <span className='matchOverviewDuration'>{formationDuration(match.info.gameDuration)}</span>
+                        <div className='flex flex-col items-center'>
+                            <img className='w-17' src={`https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${player.championName}.png`} alt={player.championName} />
+                            <span className='text-4xl'>{formationDuration(match.info.gameDuration)}</span>
                         </div>
 
                         {/* KDA */}
-                        <div className='matchOverviewKda'>
-                            <a className='matchOverviewLink' href={`/match/${matchId}`}>
-                                <span className='matchOverviewKdaKills'>{player.kills}</span>
+                        <div className='w-46 text-3xl'>
+                            <a href={`/match/${matchId}`}>
+                                <span className='text-green-700'>{player.kills}</span>
                                 /
-                                <span className='matchOverviewKdaDeaths'>{player.deaths}</span>
+                                <span className='text-red-700'>{player.deaths}</span>
                                 /
-                                <span className='matchOverviewKdaAssists'>{player.assists}</span>
+                                <span className='text-orange-300'>{player.assists}</span>
                             </a>
                         </div>
 
                         {/* Items & Keystone*/}
-                        <div className='matchOverviewItems'>
-                            <img className='matchOverviewItem' src={player.item0 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item0}.png` : '../assets/empty_item.png'} />
-                            <img className='matchOverviewItem' src={player.item1 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item1}.png` : '../assets/empty_item.png'} />
-                            <img className='matchOverviewItem' src={player.item2 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item2}.png` : '../assets/empty_item.png'} />
-                            <img className='matchOverviewItem' src={player.item6 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item6}.png` : '../assets/empty_item.png'} />
-                            <img className='matchOverviewItem' src={player.item3 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item3}.png` : '../assets/empty_item.png'} />
-                            <img className='matchOverviewItem' src={player.item4 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item4}.png` : '../assets/empty_item.png'} />
-                            <img className='matchOverviewItem' src={player.item5 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item5}.png` : '../assets/empty_item.png'} />
-                            <img className='matchOverviewItem' src='../assets/empty_item.png' /> {/* TODO: get the rune keystone */}
+                        <div className='bg-amber-600 w-36 h-20 flex flex-wrap justify-around items-center p-1'>
+                            <img className='w-8' src={player.item0 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item0}.png` : '../assets/empty_item.png'} />
+                            <img className='w-8' src={player.item1 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item1}.png` : '../assets/empty_item.png'} />
+                            <img className='w-8' src={player.item2 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item2}.png` : '../assets/empty_item.png'} />
+                            <img className='w-8' src={player.item6 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item6}.png` : '../assets/empty_item.png'} />
+                            <img className='w-8' src={player.item3 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item3}.png` : '../assets/empty_item.png'} />
+                            <img className='w-8' src={player.item4 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item4}.png` : '../assets/empty_item.png'} />
+                            <img className='w-8' src={player.item5 ? `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${player.item5}.png` : '../assets/empty_item.png'} />
+                            <img className='w-8' src='../assets/empty_item.png' /> {/* TODO: get the rune keystone */}
                         </div>
 
                         {/* Players list */}
-                        <div className='matchOverviewParticipants'>
+                        <div className='py-1 px-0 w-72 h-32 bg-orange-200 flex justify-between flex-col flex-wrap'>
                             {match.info.participants.map(
-                                (participant, index) => <div className='matchOverviewParticipant' key={index}>
-                                    <img className='matchOverviewParticipantChampion' src={`https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${participant.championName}.png`} />
-                                    <a className='mathOverviewParticipantLink' style={{ color: (participant.puuid == player.puuid) ? '#1004f3' : '#202020' }}
+                                (participant, index) => <div className='mx-0.5 w-36 font-mono flex items-center' key={index}>
+                                    <img className='mr-1 size-5' src={`https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${participant.championName}.png`} />
+                                    <a style={{ color: (participant.puuid == player.puuid) ? '#1004f3' : '#202020' }}
                                         href={participant.puuid}>
                                         {shortenString(participant.summonerName, 12)}
                                     </a>

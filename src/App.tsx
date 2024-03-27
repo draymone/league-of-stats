@@ -9,6 +9,7 @@ function App() {
   return <div>
     <UsernameInputForm />
     <Routes>
+      <Route path='/' element={<p>Welcome</p>} />
       <Route path='/user/:puuid' element={<Profile />} />
       <Route path='/match/:matchId' element={<Match />} />
     </Routes>
